@@ -47,12 +47,12 @@
     - `undefined`
 
     ```javascript
-    const foo = 1;
-    let bar = foo;
+    const foo = 1
+    let bar = foo
 
-    bar = 9;
+    bar = 9
 
-    console.log(foo, bar); // => 1, 9
+    console.log(foo, bar) // => 1, 9
     ```
 
   <a name="types--complex"></a><a name="1.2"></a>
@@ -63,12 +63,12 @@
     - `function`
 
     ```javascript
-    const foo = [1, 2];
-    const bar = foo;
+    const foo = [1, 2]
+    const bar = foo
 
-    bar[0] = 9;
+    bar[0] = 9
 
-    console.log(foo[0], bar[0]); // => 9, 9
+    console.log(foo[0], bar[0]) // => 9, 9
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -82,12 +82,12 @@
 
     ```javascript
     // bad
-    var a = 1;
-    var b = 2;
+    var a = 1
+    var b = 2
 
     // good
-    const a = 1;
-    const b = 2;
+    const a = 1
+    const b = 2
     ```
 
   <a name="references--disallow-var"></a><a name="2.2"></a>
@@ -97,15 +97,15 @@
 
     ```javascript
     // bad
-    var count = 1;
+    var count = 1
     if (true) {
-      count += 1;
+      count += 1
     }
 
     // good, use the let.
-    let count = 1;
+    let count = 1
     if (true) {
-      count += 1;
+      count += 1
     }
     ```
 
@@ -115,11 +115,11 @@
     ```javascript
     // const and let only exist in the blocks they are defined in.
     {
-      let a = 1;
-      const b = 1;
+      let a = 1
+      const b = 1
     }
-    console.log(a); // ReferenceError
-    console.log(b); // ReferenceError
+    console.log(a) // ReferenceError
+    console.log(b) // ReferenceError
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -131,10 +131,10 @@
 
     ```javascript
     // bad
-    const item = new Object();
+    const item = new Object()
 
     // good
-    const item = {};
+    const item = {}
     ```
 
   <a name="es6-computed-properties"></a><a name="3.4"></a>
@@ -145,22 +145,22 @@
     ```javascript
 
     function getKey(k) {
-      return `a key named ${k}`;
+      return `a key named ${k}`
     }
 
     // bad
     const obj = {
       id: 5,
       name: 'San Francisco',
-    };
-    obj[getKey('enabled')] = true;
+    }
+    obj[getKey('enabled')] = true
 
     // good
     const obj = {
       id: 5,
       name: 'San Francisco',
       [getKey('enabled')]: true,
-    };
+    }
     ```
 
   <a name="es6-object-shorthand"></a><a name="3.5"></a>
@@ -172,18 +172,18 @@
       value: 1,
 
       addValue: function (value) {
-        return atom.value + value;
+        return atom.value + value
       },
-    };
+    }
 
     // good
     const atom = {
       value: 1,
 
       addValue(value) {
-        return atom.value + value;
+        return atom.value + value
       },
-    };
+    }
     ```
 
   <a name="es6-object-concise"></a><a name="3.6"></a>
@@ -192,17 +192,17 @@
     > Why? It is shorter to write and descriptive.
 
     ```javascript
-    const lukeSkywalker = 'Luke Skywalker';
+    const lukeSkywalker = 'Luke Skywalker'
 
     // bad
     const obj = {
       lukeSkywalker: lukeSkywalker,
-    };
+    }
 
     // good
     const obj = {
       lukeSkywalker,
-    };
+    }
     ```
 
   <a name="objects--grouped-shorthand"></a><a name="3.7"></a>
@@ -211,8 +211,8 @@
     > Why? It’s easier to tell which properties are using the shorthand.
 
     ```javascript
-    const anakinSkywalker = 'Anakin Skywalker';
-    const lukeSkywalker = 'Luke Skywalker';
+    const anakinSkywalker = 'Anakin Skywalker'
+    const lukeSkywalker = 'Luke Skywalker'
 
     // bad
     const obj = {
@@ -222,7 +222,7 @@
       episodeThree: 3,
       mayTheFourth: 4,
       anakinSkywalker,
-    };
+    }
 
     // good
     const obj = {
@@ -232,7 +232,7 @@
       twoJediWalkIntoACantina: 2,
       episodeThree: 3,
       mayTheFourth: 4,
-    };
+    }
     ```
 
   <a name="objects--quoted-props"></a><a name="3.8"></a>
@@ -246,14 +246,14 @@
       'foo': 3,
       'bar': 4,
       'data-blah': 5,
-    };
+    }
 
     // good
     const good = {
       foo: 3,
       bar: 4,
       'data-blah': 5,
-    };
+    }
     ```
 
   <a name="objects--prototype-builtins"></a>
@@ -263,17 +263,17 @@
 
     ```javascript
     // bad
-    console.log(object.hasOwnProperty(key));
+    console.log(object.hasOwnProperty(key))
 
     // good
-    console.log(Object.prototype.hasOwnProperty.call(object, key));
+    console.log(Object.prototype.hasOwnProperty.call(object, key))
 
     // best
-    const has = Object.prototype.hasOwnProperty; // cache the lookup once, in module scope.
+    const has = Object.prototype.hasOwnProperty // cache the lookup once, in module scope.
     /* or */
-    import has from 'has';
+    import has from 'has'
     // ...
-    console.log(has.call(object, key));
+    console.log(has.call(object, key))
     ```
 
   <a name="objects--rest-spread"></a>
@@ -281,19 +281,19 @@
 
     ```javascript
     // very bad
-    const original = { a: 1, b: 2 };
-    const copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ
-    delete copy.a; // so does this
+    const original = { a: 1, b: 2 }
+    const copy = Object.assign(original, { c: 3 }) // this mutates `original` ಠ_ಠ
+    delete copy.a // so does this
 
     // bad
-    const original = { a: 1, b: 2 };
-    const copy = Object.assign({}, original, { c: 3 }); // copy => { a: 1, b: 2, c: 3 }
+    const original = { a: 1, b: 2 }
+    const copy = Object.assign({}, original, { c: 3 }) // copy => { a: 1, b: 2, c: 3 }
 
     // good
-    const original = { a: 1, b: 2 };
-    const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
+    const original = { a: 1, b: 2 }
+    const copy = { ...original, c: 3 } // copy => { a: 1, b: 2, c: 3 }
 
-    const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
+    const { a, ...noA } = copy // noA => { b: 2, c: 3 }
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -305,23 +305,23 @@
 
     ```javascript
     // bad
-    const items = new Array();
+    const items = new Array()
 
     // good
-    const items = [];
+    const items = []
     ```
 
   <a name="arrays--push"></a><a name="4.2"></a>
   - [4.2](#arrays--push) Use [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array.
 
     ```javascript
-    const someStack = [];
+    const someStack = []
 
     // bad
-    someStack[someStack.length] = 'abracadabra';
+    someStack[someStack.length] = 'abracadabra'
 
     // good
-    someStack.push('abracadabra');
+    someStack.push('abracadabra')
     ```
 
   <a name="es6-array-spreads"></a><a name="4.3"></a>
@@ -329,24 +329,24 @@
 
     ```javascript
     // bad
-    const len = items.length;
-    const itemsCopy = [];
-    let i;
+    const len = items.length
+    const itemsCopy = []
+    let i
 
-    for (i = 0; i < len; i += 1) {
-      itemsCopy[i] = items[i];
+    for (i = 0 i < len i += 1) {
+      itemsCopy[i] = items[i]
     }
 
     // good
-    const itemsCopy = [...items];
+    const itemsCopy = [...items]
     ```
 
   <a name="arrays--from"></a><a name="4.4"></a>
   - [4.4](#arrays--from) To convert an array-like object to an array, use [Array.from](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
 
     ```javascript
-    const foo = document.querySelectorAll('.foo');
-    const nodes = Array.from(foo);
+    const foo = document.querySelectorAll('.foo')
+    const nodes = Array.from(foo)
     ```
 
   <a name="arrays--callback-return"></a><a name="4.5"></a>
@@ -355,47 +355,47 @@
     ```javascript
     // good
     [1, 2, 3].map((x) => {
-      const y = x + 1;
-      return x * y;
-    });
+      const y = x + 1
+      return x * y
+    })
 
     // good
-    [1, 2, 3].map(x => x + 1);
+    [1, 2, 3].map(x => x + 1)
 
     // bad
-    const flat = {};
+    const flat = {}
     [[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
-      const flatten = memo.concat(item);
-      flat[index] = flatten;
-    });
+      const flatten = memo.concat(item)
+      flat[index] = flatten
+    })
 
     // good
-    const flat = {};
+    const flat = {}
     [[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
-      const flatten = memo.concat(item);
-      flat[index] = flatten;
-      return flatten;
-    });
+      const flatten = memo.concat(item)
+      flat[index] = flatten
+      return flatten
+    })
 
     // bad
     inbox.filter((msg) => {
-      const { subject, author } = msg;
+      const { subject, author } = msg
       if (subject === 'Mockingbird') {
-        return author === 'Harper Lee';
+        return author === 'Harper Lee'
       } else {
-        return false;
+        return false
       }
-    });
+    })
 
     // good
     inbox.filter((msg) => {
-      const { subject, author } = msg;
+      const { subject, author } = msg
       if (subject === 'Mockingbird') {
-        return author === 'Harper Lee';
+        return author === 'Harper Lee'
       }
 
-      return false;
-    });
+      return false
+    })
     ```
 
 <a name="arrays--bracket-newline"></a>
@@ -405,20 +405,20 @@
   // bad
   const arr = [
     [0, 1], [2, 3], [4, 5],
-  ];
+  ]
 
   const objectInArray = [{
     id: 1,
   }, {
     id: 2,
-  }];
+  }]
 
   const numberInArray = [
     1, 2,
-  ];
+  ]
 
   // good
-  const arr = [[0, 1], [2, 3], [4, 5]];
+  const arr = [[0, 1], [2, 3], [4, 5]]
 
   const objectInArray = [
     {
@@ -427,12 +427,12 @@
     {
       id: 2,
     },
-  ];
+  ]
 
   const numberInArray = [
     1,
     2,
-  ];
+  ]
   ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -447,21 +447,21 @@
     ```javascript
     // bad
     function getFullName(user) {
-      const firstName = user.firstName;
-      const lastName = user.lastName;
+      const firstName = user.firstName
+      const lastName = user.lastName
 
-      return `${firstName} ${lastName}`;
+      return `${firstName} ${lastName}`
     }
 
     // good
     function getFullName(user) {
-      const { firstName, lastName } = user;
-      return `${firstName} ${lastName}`;
+      const { firstName, lastName } = user
+      return `${firstName} ${lastName}`
     }
 
     // best
     function getFullName({ firstName, lastName }) {
-      return `${firstName} ${lastName}`;
+      return `${firstName} ${lastName}`
     }
     ```
 
@@ -469,14 +469,14 @@
   - [5.2](#destructuring--array) Use array destructuring. jscs: [`requireArrayDestructuring`](http://jscs.info/rule/requireArrayDestructuring)
 
     ```javascript
-    const arr = [1, 2, 3, 4];
+    const arr = [1, 2, 3, 4]
 
     // bad
-    const first = arr[0];
-    const second = arr[1];
+    const first = arr[0]
+    const second = arr[1]
 
     // good
-    const [first, second] = arr;
+    const [first, second] = arr
     ```
 
   <a name="destructuring--object-over-array"></a><a name="5.3"></a>
@@ -488,20 +488,20 @@
     // bad
     function processInput(input) {
       // then a miracle occurs
-      return [left, right, top, bottom];
+      return [left, right, top, bottom]
     }
 
     // the caller needs to think about the order of return data
-    const [left, __, top] = processInput(input);
+    const [left, __, top] = processInput(input)
 
     // good
     function processInput(input) {
       // then a miracle occurs
-      return { left, right, top, bottom };
+      return { left, right, top, bottom }
     }
 
     // the caller selects only the data they need
-    const { left, top } = processInput(input);
+    const { left, top } = processInput(input)
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -513,13 +513,13 @@
 
     ```javascript
     // bad
-    const name = "Capt. Janeway";
+    const name = "Capt. Janeway"
 
     // bad - template literals should contain interpolation or newlines
-    const name = `Capt. Janeway`;
+    const name = `Capt. Janeway`
 
     // good
-    const name = 'Capt. Janeway';
+    const name = 'Capt. Janeway'
     ```
 
   <a name="strings--line-length"></a><a name="6.2"></a>
@@ -532,15 +532,15 @@
     const errorMessage = 'This is a super long error that was thrown because \
     of Batman. When you stop to think about how Batman had anything to do \
     with this, you would get nowhere \
-    fast.';
+    fast.'
 
     // bad
     const errorMessage = 'This is a super long error that was thrown because ' +
       'of Batman. When you stop to think about how Batman had anything to do ' +
-      'with this, you would get nowhere fast.';
+      'with this, you would get nowhere fast.'
 
     // good
-    const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+    const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.'
     ```
 
   <a name="es6-template-literals"></a><a name="6.4"></a>
@@ -551,22 +551,22 @@
     ```javascript
     // bad
     function sayHi(name) {
-      return 'How are you, ' + name + '?';
+      return 'How are you, ' + name + '?'
     }
 
     // bad
     function sayHi(name) {
-      return ['How are you, ', name, '?'].join();
+      return ['How are you, ', name, '?'].join()
     }
 
     // bad
     function sayHi(name) {
-      return `How are you, ${ name }?`;
+      return `How are you, ${ name }?`
     }
 
     // good
     function sayHi(name) {
-      return `How are you, ${name}?`;
+      return `How are you, ${name}?`
     }
     ```
 
@@ -580,11 +580,11 @@
 
     ```javascript
     // bad
-    const foo = '\'this\' \i\s \"quoted\"';
+    const foo = '\'this\' \i\s \"quoted\"'
 
     // good
-    const foo = '\'this\' is "quoted"';
-    const foo = `my name is '${name}'`;
+    const foo = '\'this\' is "quoted"'
+    const foo = `my name is '${name}'`
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -605,12 +605,12 @@
     // bad
     const foo = function () {
       // ...
-    };
+    }
 
     // good
     const foo = function bar() {
       // ...
-    };
+    }
     ```
 
   <a name="functions--iife"></a><a name="7.2"></a>
@@ -621,8 +621,8 @@
     ```javascript
     // immediately-invoked function expression (IIFE)
     (function () {
-      console.log('Welcome to the Internet. Please follow me.');
-    }());
+      console.log('Welcome to the Internet. Please follow me.')
+    }())
     ```
 
   <a name="functions--in-blocks"></a><a name="7.3"></a>
@@ -635,16 +635,16 @@
     // bad
     if (currentUser) {
       function test() {
-        console.log('Nope.');
+        console.log('Nope.')
       }
     }
 
     // good
-    let test;
+    let test
     if (currentUser) {
       test = () => {
-        console.log('Yup.');
-      };
+        console.log('Yup.')
+      }
     }
     ```
 
@@ -671,13 +671,13 @@
     ```javascript
     // bad
     function concatenateAll() {
-      const args = Array.prototype.slice.call(arguments);
-      return args.join('');
+      const args = Array.prototype.slice.call(arguments)
+      return args.join('')
     }
 
     // good
     function concatenateAll(...args) {
-      return args.join('');
+      return args.join('')
     }
     ```
 
@@ -690,14 +690,14 @@
       // No! We shouldn’t mutate function arguments.
       // Double bad: if opts is falsy it'll be set to an object which may
       // be what you want but it can introduce subtle bugs.
-      opts = opts || {};
+      opts = opts || {}
       // ...
     }
 
     // still bad
     function handleThings(opts) {
       if (opts === void 0) {
-        opts = {};
+        opts = {}
       }
       // ...
     }
@@ -714,15 +714,15 @@
     > Why? They are confusing to reason about.
 
     ```javascript
-    var b = 1;
+    var b = 1
     // bad
     function count(a = b++) {
-      console.log(a);
+      console.log(a)
     }
-    count();  // 1
-    count();  // 2
-    count(3); // 3
-    count();  // 3
+    count()  // 1
+    count()  // 2
+    count(3) // 3
+    count()  // 3
     ```
 
   <a name="functions--defaults-last"></a><a name="7.9"></a>
@@ -747,10 +747,10 @@
 
     ```javascript
     // bad
-    var add = new Function('a', 'b', 'return a + b');
+    var add = new Function('a', 'b', 'return a + b')
 
     // still bad
-    var subtract = Function('a', 'b', 'return a - b');
+    var subtract = Function('a', 'b', 'return a - b')
     ```
 
   <a name="functions--signature-spacing"></a><a name="7.11"></a>
@@ -760,13 +760,13 @@
 
     ```javascript
     // bad
-    const f = function(){};
-    const g = function (){};
-    const h = function() {};
+    const f = function(){}
+    const g = function (){}
+    const h = function() {}
 
     // good
-    const x = function () {};
-    const y = function a() {};
+    const x = function () {}
+    const y = function a() {}
     ```
 
   <a name="functions--mutate-params"></a><a name="7.12"></a>
@@ -777,12 +777,12 @@
     ```javascript
     // bad
     function f1(obj) {
-      obj.key = 1;
+      obj.key = 1
     }
 
     // good
     function f2(obj) {
-      const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
+      const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1
     }
     ```
 
@@ -794,18 +794,18 @@
     ```javascript
     // bad
     function f1(a) {
-      a = 1;
+      a = 1
       // ...
     }
 
     function f2(a) {
-      if (!a) { a = 1; }
+      if (!a) { a = 1 }
       // ...
     }
 
     // good
     function f3(a) {
-      const b = a || 1;
+      const b = a || 1
       // ...
     }
 
@@ -821,18 +821,18 @@
 
     ```javascript
     // bad
-    const x = [1, 2, 3, 4, 5];
-    console.log.apply(console, x);
+    const x = [1, 2, 3, 4, 5]
+    console.log.apply(console, x)
 
     // good
-    const x = [1, 2, 3, 4, 5];
-    console.log(...x);
+    const x = [1, 2, 3, 4, 5]
+    console.log(...x)
 
     // bad
-    new (Function.prototype.bind.apply(Date, [null, 2016, 8, 5]));
+    new (Function.prototype.bind.apply(Date, [null, 2016, 8, 5]))
 
     // good
-    new Date(...[2016, 8, 5]);
+    new Date(...[2016, 8, 5])
     ```
 
   <a name="functions--signature-invocation-indentation"></a>
@@ -858,14 +858,14 @@
     // bad
     console.log(foo,
       bar,
-      baz);
+      baz)
 
     // good
     console.log(
       foo,
       bar,
       baz,
-    );
+    )
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -882,15 +882,15 @@
     ```javascript
     // bad
     [1, 2, 3].map(function (x) {
-      const y = x + 1;
-      return x * y;
-    });
+      const y = x + 1
+      return x * y
+    })
 
     // good
     [1, 2, 3].map((x) => {
-      const y = x + 1;
-      return x * y;
-    });
+      const y = x + 1
+      return x * y
+    })
     ```
 
   <a name="arrows--implicit-return"></a><a name="8.2"></a>
@@ -901,41 +901,41 @@
     ```javascript
     // bad
     [1, 2, 3].map(number => {
-      const nextNumber = number + 1;
-      `A string containing the ${nextNumber}.`;
-    });
+      const nextNumber = number + 1
+      `A string containing the ${nextNumber}.`
+    })
 
     // good
-    [1, 2, 3].map(number => `A string containing the ${number}.`);
+    [1, 2, 3].map(number => `A string containing the ${number}.`)
 
     // good
     [1, 2, 3].map((number) => {
-      const nextNumber = number + 1;
-      return `A string containing the ${nextNumber}.`;
-    });
+      const nextNumber = number + 1
+      return `A string containing the ${nextNumber}.`
+    })
 
     // good
     [1, 2, 3].map((number, index) => ({
       [index]: number,
-    }));
+    }))
 
     // No implicit return with side effects
     function foo(callback) {
-      const val = callback();
+      const val = callback()
       if (val === true) {
         // Do something if callback returns true
       }
     }
 
-    let bool = false;
+    let bool = false
 
     // bad
-    foo(() => bool = true);
+    foo(() => bool = true)
 
     // good
     foo(() => {
-      bool = true;
-    });
+      bool = true
+    })
     ```
 
   <a name="arrows--paren-wrap"></a><a name="8.3"></a>
@@ -949,7 +949,7 @@
         httpMagicObjectWithAVeryLongName,
         httpMethod,
       )
-    );
+    )
 
     // good
     ['get', 'post', 'put'].map(httpMethod => (
@@ -957,7 +957,7 @@
         httpMagicObjectWithAVeryLongName,
         httpMethod,
       )
-    ));
+    ))
     ```
 
   <a name="arrows--one-arg-parens"></a><a name="8.4"></a>
@@ -967,27 +967,27 @@
 
     ```javascript
     // bad
-    [1, 2, 3].map((x) => x * x);
+    [1, 2, 3].map((x) => x * x)
 
     // good
-    [1, 2, 3].map(x => x * x);
+    [1, 2, 3].map(x => x * x)
 
     // good
     [1, 2, 3].map(number => (
       `A long string with the ${number}. It’s so long that we don’t want it to take up space on the .map line!`
-    ));
+    ))
 
     // bad
     [1, 2, 3].map(x => {
-      const y = x + 1;
-      return x * y;
-    });
+      const y = x + 1
+      return x * y
+    })
 
     // good
     [1, 2, 3].map((x) => {
-      const y = x + 1;
-      return x * y;
-    });
+      const y = x + 1
+      return x * y
+    })
     ```
 
   <a name="arrows--confusing"></a><a name="8.5"></a>
@@ -995,19 +995,19 @@
 
     ```javascript
     // bad
-    const itemHeight = item => item.height > 256 ? item.largeSize : item.smallSize;
+    const itemHeight = item => item.height > 256 ? item.largeSize : item.smallSize
 
     // bad
-    const itemHeight = (item) => item.height > 256 ? item.largeSize : item.smallSize;
+    const itemHeight = (item) => item.height > 256 ? item.largeSize : item.smallSize
 
     // good
-    const itemHeight = item => (item.height > 256 ? item.largeSize : item.smallSize);
+    const itemHeight = item => (item.height > 256 ? item.largeSize : item.smallSize)
 
     // good
     const itemHeight = (item) => {
-      const { height, largeSize, smallSize } = item;
-      return height > 256 ? largeSize : smallSize;
-    };
+      const { height, largeSize, smallSize } = item
+      return height > 256 ? largeSize : smallSize
+    }
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1022,23 +1022,23 @@
     ```javascript
     // bad
     function Queue(contents = []) {
-      this.queue = [...contents];
+      this.queue = [...contents]
     }
     Queue.prototype.pop = function () {
-      const value = this.queue[0];
-      this.queue.splice(0, 1);
-      return value;
-    };
+      const value = this.queue[0]
+      this.queue.splice(0, 1)
+      return value
+    }
 
     // good
     class Queue {
       constructor(contents = []) {
-        this.queue = [...contents];
+        this.queue = [...contents]
       }
       pop() {
-        const value = this.queue[0];
-        this.queue.splice(0, 1);
-        return value;
+        const value = this.queue[0]
+        this.queue.splice(0, 1)
+        return value
       }
     }
     ```
@@ -1050,19 +1050,19 @@
 
     ```javascript
     // bad
-    const inherits = require('inherits');
+    const inherits = require('inherits')
     function PeekableQueue(contents) {
-      Queue.apply(this, contents);
+      Queue.apply(this, contents)
     }
-    inherits(PeekableQueue, Queue);
+    inherits(PeekableQueue, Queue)
     PeekableQueue.prototype.peek = function () {
-      return this.queue[0];
-    };
+      return this.queue[0]
+    }
 
     // good
     class PeekableQueue extends Queue {
       peek() {
-        return this.queue[0];
+        return this.queue[0]
       }
     }
     ```
@@ -1073,35 +1073,35 @@
     ```javascript
     // bad
     Jedi.prototype.jump = function () {
-      this.jumping = true;
-      return true;
-    };
+      this.jumping = true
+      return true
+    }
 
     Jedi.prototype.setHeight = function (height) {
-      this.height = height;
-    };
+      this.height = height
+    }
 
-    const luke = new Jedi();
-    luke.jump(); // => true
-    luke.setHeight(20); // => undefined
+    const luke = new Jedi()
+    luke.jump() // => true
+    luke.setHeight(20) // => undefined
 
     // good
     class Jedi {
       jump() {
-        this.jumping = true;
-        return this;
+        this.jumping = true
+        return this
       }
 
       setHeight(height) {
-        this.height = height;
-        return this;
+        this.height = height
+        return this
       }
     }
 
-    const luke = new Jedi();
+    const luke = new Jedi()
 
     luke.jump()
-      .setHeight(20);
+      .setHeight(20)
     ```
 
   <a name="constructors--tostring"></a><a name="9.4"></a>
@@ -1110,15 +1110,15 @@
     ```javascript
     class Jedi {
       constructor(options = {}) {
-        this.name = options.name || 'no name';
+        this.name = options.name || 'no name'
       }
 
       getName() {
-        return this.name;
+        return this.name
       }
 
       toString() {
-        return `Jedi - ${this.getName()}`;
+        return `Jedi - ${this.getName()}`
       }
     }
     ```
@@ -1132,22 +1132,22 @@
       constructor() {}
 
       getName() {
-        return this.name;
+        return this.name
       }
     }
 
     // bad
     class Rey extends Jedi {
       constructor(...args) {
-        super(...args);
+        super(...args)
       }
     }
 
     // good
     class Rey extends Jedi {
       constructor(...args) {
-        super(...args);
-        this.name = 'Rey';
+        super(...args)
+        this.name = 'Rey'
       }
     }
     ```
@@ -1160,18 +1160,18 @@
     ```javascript
     // bad
     class Foo {
-      bar() { return 1; }
-      bar() { return 2; }
+      bar() { return 1 }
+      bar() { return 2 }
     }
 
     // good
     class Foo {
-      bar() { return 1; }
+      bar() { return 1 }
     }
 
     // good
     class Foo {
-      bar() { return 2; }
+      bar() { return 2 }
     }
     ```
 
@@ -1186,16 +1186,16 @@
 
     ```javascript
     // bad
-    const AirbnbStyleGuide = require('./AirbnbStyleGuide');
-    module.exports = AirbnbStyleGuide.es6;
+    const AirbnbStyleGuide = require('./AirbnbStyleGuide')
+    module.exports = AirbnbStyleGuide.es6
 
     // ok
-    import AirbnbStyleGuide from './AirbnbStyleGuide';
-    export default AirbnbStyleGuide.es6;
+    import AirbnbStyleGuide from './AirbnbStyleGuide'
+    export default AirbnbStyleGuide.es6
 
     // best
-    import { es6 } from './AirbnbStyleGuide';
-    export default es6;
+    import { es6 } from './AirbnbStyleGuide'
+    export default es6
     ```
 
   <a name="modules--no-wildcard"></a><a name="10.2"></a>
@@ -1205,10 +1205,10 @@
 
     ```javascript
     // bad
-    import * as AirbnbStyleGuide from './AirbnbStyleGuide';
+    import * as AirbnbStyleGuide from './AirbnbStyleGuide'
 
     // good
-    import AirbnbStyleGuide from './AirbnbStyleGuide';
+    import AirbnbStyleGuide from './AirbnbStyleGuide'
     ```
 
   <a name="modules--no-export-from-import"></a><a name="10.3"></a>
@@ -1219,12 +1219,12 @@
     ```javascript
     // bad
     // filename es6.js
-    export { es6 as default } from './AirbnbStyleGuide';
+    export { es6 as default } from './AirbnbStyleGuide'
 
     // good
     // filename es6.js
-    import { es6 } from './AirbnbStyleGuide';
-    export default es6;
+    import { es6 } from './AirbnbStyleGuide'
+    export default es6
     ```
 
   <a name="modules--no-duplicate-imports"></a>
@@ -1234,18 +1234,18 @@
 
     ```javascript
     // bad
-    import foo from 'foo';
+    import foo from 'foo'
     // … some other imports … //
-    import { named1, named2 } from 'foo';
+    import { named1, named2 } from 'foo'
 
     // good
-    import foo, { named1, named2 } from 'foo';
+    import foo, { named1, named2 } from 'foo'
 
     // good
     import foo, {
       named1,
       named2,
-    } from 'foo';
+    } from 'foo'
     ```
 
   <a name="modules--no-mutable-exports"></a>
@@ -1255,12 +1255,12 @@
 
     ```javascript
     // bad
-    let foo = 3;
-    export { foo };
+    let foo = 3
+    export { foo }
 
     // good
-    const foo = 3;
-    export { foo };
+    const foo = 3
+    export { foo }
     ```
 
   <a name="modules--prefer-default-export"></a>
@@ -1283,16 +1283,16 @@
 
     ```javascript
     // bad
-    import foo from 'foo';
-    foo.init();
+    import foo from 'foo'
+    foo.init()
 
-    import bar from 'bar';
+    import bar from 'bar'
 
     // good
-    import foo from 'foo';
-    import bar from 'bar';
+    import foo from 'foo'
+    import bar from 'bar'
 
-    foo.init();
+    foo.init()
     ```
 
   <a name="modules--multiline-imports-over-newlines"></a>
@@ -1302,7 +1302,7 @@
 
     ```javascript
     // bad
-    import {longNameA, longNameB, longNameC, longNameD, longNameE} from 'path';
+    import {longNameA, longNameB, longNameC, longNameD, longNameE} from 'path'
 
     // good
     import {
@@ -1311,7 +1311,7 @@
       longNameC,
       longNameD,
       longNameE,
-    } from 'path';
+    } from 'path'
     ```
 
   <a name="modules--no-webpack-loader-syntax"></a>
@@ -1321,12 +1321,12 @@
 
     ```javascript
     // bad
-    import fooSass from 'css!sass!foo.scss';
-    import barCss from 'style!css!bar.css';
+    import fooSass from 'css!sass!foo.scss'
+    import barCss from 'style!css!bar.css'
 
     // good
-    import fooSass from 'foo.scss';
-    import barCss from 'bar.css';
+    import fooSass from 'foo.scss'
+    import barCss from 'bar.css'
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1341,40 +1341,40 @@
     > Use `map()` / `every()` / `filter()` / `find()` / `findIndex()` / `reduce()` / `some()` / ... to iterate over arrays, and `Object.keys()` / `Object.values()` / `Object.entries()` to produce arrays so you can iterate over objects.
 
     ```javascript
-    const numbers = [1, 2, 3, 4, 5];
+    const numbers = [1, 2, 3, 4, 5]
 
     // bad
-    let sum = 0;
+    let sum = 0
     for (let num of numbers) {
-      sum += num;
+      sum += num
     }
-    sum === 15;
+    sum === 15
 
     // good
-    let sum = 0;
+    let sum = 0
     numbers.forEach((num) => {
-      sum += num;
-    });
-    sum === 15;
+      sum += num
+    })
+    sum === 15
 
     // best (use the functional force)
-    const sum = numbers.reduce((total, num) => total + num, 0);
-    sum === 15;
+    const sum = numbers.reduce((total, num) => total + num, 0)
+    sum === 15
 
     // bad
-    const increasedByOne = [];
-    for (let i = 0; i < numbers.length; i++) {
-      increasedByOne.push(numbers[i] + 1);
+    const increasedByOne = []
+    for (let i = 0 i < numbers.length i++) {
+      increasedByOne.push(numbers[i] + 1)
     }
 
     // good
-    const increasedByOne = [];
+    const increasedByOne = []
     numbers.forEach((num) => {
-      increasedByOne.push(num + 1);
-    });
+      increasedByOne.push(num + 1)
+    })
 
     // best (keeping it functional)
-    const increasedByOne = numbers.map(num => num + 1);
+    const increasedByOne = numbers.map(num => num + 1)
     ```
 
   <a name="generators--nope"></a><a name="11.2"></a>
@@ -1396,17 +1396,17 @@
     // bad
     const bar = function * () {
       // ...
-    };
+    }
 
     // bad
     const baz = function *() {
       // ...
-    };
+    }
 
     // bad
     const quux = function*() {
       // ...
-    };
+    }
 
     // bad
     function*foo() {
@@ -1430,7 +1430,7 @@
     *
     () {
       // ...
-    };
+    }
 
     // good
     function* foo() {
@@ -1440,7 +1440,7 @@
     // good
     const foo = function* () {
       // ...
-    };
+    }
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1454,13 +1454,13 @@
     const luke = {
       jedi: true,
       age: 28,
-    };
+    }
 
     // bad
-    const isJedi = luke['jedi'];
+    const isJedi = luke['jedi']
 
     // good
-    const isJedi = luke.jedi;
+    const isJedi = luke.jedi
     ```
 
   <a name="properties--bracket"></a><a name="12.2"></a>
@@ -1470,23 +1470,23 @@
     const luke = {
       jedi: true,
       age: 28,
-    };
-
-    function getProp(prop) {
-      return luke[prop];
     }
 
-    const isJedi = getProp('jedi');
+    function getProp(prop) {
+      return luke[prop]
+    }
+
+    const isJedi = getProp('jedi')
     ```
   <a name="es2016-properties--exponentiation-operator"></a>
   - [12.3](#es2016-properties--exponentiation-operator) Use exponentiation operator `**` when calculating exponentiations. eslint: [`no-restricted-properties`](http://eslint.org/docs/rules/no-restricted-properties).
 
     ```javascript
     // bad
-    const binary = Math.pow(2, 10);
+    const binary = Math.pow(2, 10)
 
     // good
-    const binary = 2 ** 10;
+    const binary = 2 ** 10
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1498,10 +1498,10 @@
 
     ```javascript
     // bad
-    superPower = new SuperPower();
+    superPower = new SuperPower()
 
     // good
-    const superPower = new SuperPower();
+    const superPower = new SuperPower()
     ```
 
   <a name="variables--one-const"></a><a name="13.2"></a>
@@ -1513,18 +1513,18 @@
     // bad
     const items = getItems(),
         goSportsTeam = true,
-        dragonball = 'z';
+        dragonball = 'z'
 
     // bad
     // (compare to above, and try to spot the mistake)
     const items = getItems(),
-        goSportsTeam = true;
-        dragonball = 'z';
+        goSportsTeam = true
+        dragonball = 'z'
 
     // good
-    const items = getItems();
-    const goSportsTeam = true;
-    const dragonball = 'z';
+    const items = getItems()
+    const goSportsTeam = true
+    const dragonball = 'z'
     ```
 
   <a name="variables--const-let-group"></a><a name="13.3"></a>
@@ -1536,21 +1536,21 @@
     // bad
     let i, len, dragonball,
         items = getItems(),
-        goSportsTeam = true;
+        goSportsTeam = true
 
     // bad
-    let i;
-    const items = getItems();
-    let dragonball;
-    const goSportsTeam = true;
-    let len;
+    let i
+    const items = getItems()
+    let dragonball
+    const goSportsTeam = true
+    let len
 
     // good
-    const goSportsTeam = true;
-    const items = getItems();
-    let dragonball;
-    let i;
-    let length;
+    const goSportsTeam = true
+    const items = getItems()
+    let dragonball
+    let i
+    let length
     ```
 
   <a name="variables--define-where-used"></a><a name="13.4"></a>
@@ -1561,34 +1561,34 @@
     ```javascript
     // bad - unnecessary function call
     function checkName(hasName) {
-      const name = getName();
+      const name = getName()
 
       if (hasName === 'test') {
-        return false;
+        return false
       }
 
       if (name === 'test') {
-        this.setName('');
-        return false;
+        this.setName('')
+        return false
       }
 
-      return name;
+      return name
     }
 
     // good
     function checkName(hasName) {
       if (hasName === 'test') {
-        return false;
+        return false
       }
 
-      const name = getName();
+      const name = getName()
 
       if (name === 'test') {
-        this.setName('');
-        return false;
+        this.setName('')
+        return false
       }
 
-      return name;
+      return name
     }
     ```
   <a name="variables--no-chain-assignment"></a><a name="13.5"></a>
@@ -1600,26 +1600,26 @@
     // bad
     (function example() {
       // JavaScript interprets this as
-      // let a = ( b = ( c = 1 ) );
+      // let a = ( b = ( c = 1 ) )
       // The let keyword only applies to variable a; variables b and c become
       // global variables.
-      let a = b = c = 1;
-    }());
+      let a = b = c = 1
+    }())
 
-    console.log(a); // throws ReferenceError
-    console.log(b); // 1
-    console.log(c); // 1
+    console.log(a) // throws ReferenceError
+    console.log(b) // 1
+    console.log(c) // 1
 
     // good
     (function example() {
-      let a = 1;
-      let b = a;
-      let c = a;
-    }());
+      let a = 1
+      let b = a
+      let c = a
+    }())
 
-    console.log(a); // throws ReferenceError
-    console.log(b); // throws ReferenceError
-    console.log(c); // throws ReferenceError
+    console.log(a) // throws ReferenceError
+    console.log(b) // throws ReferenceError
+    console.log(c) // throws ReferenceError
 
     // the same applies for `const`
     ```
@@ -1632,30 +1632,30 @@
     ```javascript
     // bad
 
-    const array = [1, 2, 3];
-    let num = 1;
-    num++;
-    --num;
+    const array = [1, 2, 3]
+    let num = 1
+    num++
+    --num
 
-    let sum = 0;
-    let truthyCount = 0;
+    let sum = 0
+    let truthyCount = 0
     for (let i = 0; i < array.length; i++) {
-      let value = array[i];
-      sum += value;
+      let value = array[i]
+      sum += value
       if (value) {
-        truthyCount++;
+        truthyCount++
       }
     }
 
     // good
 
-    const array = [1, 2, 3];
-    let num = 1;
-    num += 1;
-    num -= 1;
+    const array = [1, 2, 3]
+    let num = 1
+    num += 1
+    num -= 1
 
-    const sum = array.reduce((a, b) => a + b, 0);
-    const truthyCount = array.filter(Boolean).length;
+    const sum = array.reduce((a, b) => a + b, 0)
+    const truthyCount = array.filter(Boolean).length
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1669,7 +1669,7 @@
     // we know this wouldn’t work (assuming there
     // is no notDefined global variable)
     function example() {
-      console.log(notDefined); // => throws a ReferenceError
+      console.log(notDefined) // => throws a ReferenceError
     }
 
     // creating a variable declaration after you
@@ -1677,24 +1677,24 @@
     // variable hoisting. Note: the assignment
     // value of `true` is not hoisted.
     function example() {
-      console.log(declaredButNotAssigned); // => undefined
-      var declaredButNotAssigned = true;
+      console.log(declaredButNotAssigned) // => undefined
+      var declaredButNotAssigned = true
     }
 
     // the interpreter is hoisting the variable
     // declaration to the top of the scope,
     // which means our example could be rewritten as:
     function example() {
-      let declaredButNotAssigned;
-      console.log(declaredButNotAssigned); // => undefined
-      declaredButNotAssigned = true;
+      let declaredButNotAssigned
+      console.log(declaredButNotAssigned) // => undefined
+      declaredButNotAssigned = true
     }
 
     // using const and let
     function example() {
-      console.log(declaredButNotAssigned); // => throws a ReferenceError
-      console.log(typeof declaredButNotAssigned); // => throws a ReferenceError
-      const declaredButNotAssigned = true;
+      console.log(declaredButNotAssigned) // => throws a ReferenceError
+      console.log(typeof declaredButNotAssigned) // => throws a ReferenceError
+      const declaredButNotAssigned = true
     }
     ```
 
@@ -1703,13 +1703,13 @@
 
     ```javascript
     function example() {
-      console.log(anonymous); // => undefined
+      console.log(anonymous) // => undefined
 
-      anonymous(); // => TypeError anonymous is not a function
+      anonymous() // => TypeError anonymous is not a function
 
       var anonymous = function () {
-        console.log('anonymous function expression');
-      };
+        console.log('anonymous function expression')
+      }
     }
     ```
 
@@ -1718,27 +1718,27 @@
 
     ```javascript
     function example() {
-      console.log(named); // => undefined
+      console.log(named) // => undefined
 
-      named(); // => TypeError named is not a function
+      named() // => TypeError named is not a function
 
-      superPower(); // => ReferenceError superPower is not defined
+      superPower() // => ReferenceError superPower is not defined
 
       var named = function superPower() {
-        console.log('Flying');
-      };
+        console.log('Flying')
+      }
     }
 
     // the same is true when the function name
     // is the same as the variable name.
     function example() {
-      console.log(named); // => undefined
+      console.log(named) // => undefined
 
-      named(); // => TypeError named is not a function
+      named() // => TypeError named is not a function
 
       var named = function named() {
-        console.log('named');
-      };
+        console.log('named')
+      }
     }
     ```
 
@@ -1747,10 +1747,10 @@
 
     ```javascript
     function example() {
-      superPower(); // => Flying
+      superPower() // => Flying
 
       function superPower() {
-        console.log('Flying');
+        console.log('Flying')
       }
     }
     ```
@@ -1828,16 +1828,16 @@
     // bad
     switch (foo) {
       case 1:
-        let x = 1;
-        break;
+        let x = 1
+        break
       case 2:
-        const y = 2;
-        break;
+        const y = 2
+        break
       case 3:
         function f() {
           // ...
         }
-        break;
+        break
       default:
         class C {}
     }
@@ -1845,22 +1845,22 @@
     // good
     switch (foo) {
       case 1: {
-        let x = 1;
-        break;
+        let x = 1
+        break
       }
       case 2: {
-        const y = 2;
-        break;
+        const y = 2
+        break
       }
       case 3: {
         function f() {
           // ...
         }
-        break;
+        break
       }
       case 4:
-        bar();
-        break;
+        bar()
+        break
       default: {
         class C {}
       }
@@ -1874,19 +1874,19 @@
     // bad
     const foo = maybe1 > maybe2
       ? "bar"
-      : value1 > value2 ? "baz" : null;
+      : value1 > value2 ? "baz" : null
 
     // better
-    const maybeNull = value1 > value2 ? 'baz' : null;
+    const maybeNull = value1 > value2 ? 'baz' : null
 
     const foo = maybe1 > maybe2
       ? 'bar'
-      : maybeNull;
+      : maybeNull
 
     // best
-    const maybeNull = value1 > value2 ? 'baz' : null;
+    const maybeNull = value1 > value2 ? 'baz' : null
 
-    const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
+    const foo = maybe1 > maybe2 ? 'bar' : maybeNull
     ```
 
   <a name="comparison--unneeded-ternary"></a><a name="15.7"></a>
@@ -1894,14 +1894,14 @@
 
     ```javascript
     // bad
-    const foo = a ? a : b;
-    const bar = c ? true : false;
-    const baz = c ? false : true;
+    const foo = a ? a : b
+    const bar = c ? true : false
+    const baz = c ? false : true
 
     // good
-    const foo = a || b;
-    const bar = !!c;
-    const baz = !c;
+    const foo = a || b
+    const bar = !!c
+    const baz = !c
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1914,22 +1914,22 @@
     ```javascript
     // bad
     if (test)
-      return false;
+      return false
 
     // good
-    if (test) return false;
+    if (test) return false
 
     // good
     if (test) {
-      return false;
+      return false
     }
 
     // bad
-    function foo() { return false; }
+    function foo() { return false }
 
     // good
     function bar() {
-      return false;
+      return false
     }
     ```
 
@@ -1939,19 +1939,19 @@
     ```javascript
     // bad
     if (test) {
-      thing1();
-      thing2();
+      thing1()
+      thing2()
     }
     else {
-      thing3();
+      thing3()
     }
 
     // good
     if (test) {
-      thing1();
-      thing2();
+      thing1()
+      thing2()
     } else {
-      thing3();
+      thing3()
     }
     ```
 
@@ -1965,19 +1965,19 @@
     ```javascript
     // bad
     if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
-      thing1();
+      thing1()
     }
 
     // bad
     if (foo === 123 &&
       bar === 'abc') {
-      thing1();
+      thing1()
     }
 
     // bad
     if (foo === 123
       && bar === 'abc') {
-      thing1();
+      thing1()
     }
 
     // good
@@ -1986,12 +1986,12 @@
       doesItLookGoodWhenItBecomesThatLong() &&
       isThisReallyHappening()
     ) {
-      thing1();
+      thing1()
     }
 
     // good
     if (foo === 123 && bar === 'abc') {
-      thing1();
+      thing1()
     }
 
     // good
@@ -1999,7 +1999,7 @@
       foo === 123 &&
       bar === 'abc'
     ) {
-      thing1();
+      thing1()
     }
 
     // good
@@ -2007,7 +2007,7 @@
       foo === 123
       && bar === 'abc'
     ) {
-      thing1();
+      thing1()
     }
     ```
 
@@ -2029,7 +2029,7 @@
 
       // ...
 
-      return element;
+      return element
     }
 
     // good
@@ -2041,7 +2041,7 @@
 
       // ...
 
-      return element;
+      return element
     }
     ```
 
@@ -2050,37 +2050,37 @@
 
     ```javascript
     // bad
-    const active = true;  // is current tab
+    const active = true  // is current tab
 
     // good
     // is current tab
-    const active = true;
+    const active = true
 
     // bad
     function getType() {
-      console.log('fetching type...');
+      console.log('fetching type...')
       // set the default type to 'no type'
-      const type = this.type || 'no type';
+      const type = this.type || 'no type'
 
-      return type;
+      return type
     }
 
     // good
     function getType() {
-      console.log('fetching type...');
+      console.log('fetching type...')
 
       // set the default type to 'no type'
-      const type = this.type || 'no type';
+      const type = this.type || 'no type'
 
-      return type;
+      return type
     }
 
     // also good
     function getType() {
       // set the default type to 'no type'
-      const type = this.type || 'no type';
+      const type = this.type || 'no type'
 
-      return type;
+      return type
     }
     ```
 
@@ -2089,11 +2089,11 @@
     ```javascript
     // bad
     //is current tab
-    const active = true;
+    const active = true
 
     // good
     // is current tab
-    const active = true;
+    const active = true
 
     // bad
     /**
@@ -2104,7 +2104,7 @@
 
       // ...
 
-      return element;
+      return element
     }
 
     // good
@@ -2116,7 +2116,7 @@
 
       // ...
 
-      return element;
+      return element
     }
     ```
 
@@ -2129,10 +2129,10 @@
     ```javascript
     class Calculator extends Abacus {
       constructor() {
-        super();
+        super()
 
         // FIXME: shouldn’t use a global here
-        total = 0;
+        total = 0
       }
     }
     ```
@@ -2143,10 +2143,10 @@
     ```javascript
     class Calculator extends Abacus {
       constructor() {
-        super();
+        super()
 
         // TODO: total should be configurable by an options param
-        this.total = 0;
+        this.total = 0
       }
     }
     ```
@@ -2161,17 +2161,17 @@
     ```javascript
     // bad
     function foo() {
-    ∙∙∙∙let name;
+    ∙∙∙∙let name
     }
 
     // bad
     function bar() {
-    ∙let name;
+    ∙let name
     }
 
     // good
     function baz() {
-    ∙∙let name;
+    ∙∙let name
     }
     ```
 
@@ -2181,25 +2181,25 @@
     ```javascript
     // bad
     function test(){
-      console.log('test');
+      console.log('test')
     }
 
     // good
     function test() {
-      console.log('test');
+      console.log('test')
     }
 
     // bad
     dog.set('attr',{
       age: '1 year',
       breed: 'Bernese Mountain Dog',
-    });
+    })
 
     // good
     dog.set('attr', {
       age: '1 year',
       breed: 'Bernese Mountain Dog',
-    });
+    })
     ```
 
   <a name="whitespace--around-keywords"></a><a name="18.3"></a>
@@ -2208,22 +2208,22 @@
     ```javascript
     // bad
     if(isJedi) {
-      fight ();
+      fight ()
     }
 
     // good
     if (isJedi) {
-      fight();
+      fight()
     }
 
     // bad
     function fight () {
-      console.log ('Swooosh!');
+      console.log ('Swooosh!')
     }
 
     // good
     function fight() {
-      console.log('Swooosh!');
+      console.log('Swooosh!')
     }
     ```
 
@@ -2232,10 +2232,10 @@
 
     ```javascript
     // bad
-    const x=y+5;
+    const x=y+5
 
     // good
-    const x = y + 5;
+    const x = y + 5
     ```
 
   <a name="whitespace--newline-at-end"></a><a name="18.5"></a>
@@ -2243,24 +2243,24 @@
 
     ```javascript
     // bad
-    import { es6 } from './AirbnbStyleGuide';
+    import { es6 } from './AirbnbStyleGuide'
       // ...
-    export default es6;
+    export default es6
     ```
 
     ```javascript
     // bad
-    import { es6 } from './AirbnbStyleGuide';
+    import { es6 } from './AirbnbStyleGuide'
       // ...
-    export default es6;↵
+    export default es6↵
     ↵
     ```
 
     ```javascript
     // good
-    import { es6 } from './AirbnbStyleGuide';
+    import { es6 } from './AirbnbStyleGuide'
       // ...
-    export default es6;↵
+    export default es6↵
     ```
 
   <a name="whitespace--chains"></a><a name="18.6"></a>
@@ -2269,7 +2269,7 @@
 
     ```javascript
     // bad
-    $('#items').find('.selected').highlight().end().find('.open').updateCount();
+    $('#items').find('.selected').highlight().end().find('.open').updateCount()
 
     // bad
     $('#items').
@@ -2277,7 +2277,7 @@
         highlight().
         end().
       find('.open').
-        updateCount();
+        updateCount()
 
     // good
     $('#items')
@@ -2285,13 +2285,13 @@
         .highlight()
         .end()
       .find('.open')
-        .updateCount();
+        .updateCount()
 
     // bad
     const leds = stage.selectAll('.led').data(data).enter().append('svg:svg').classed('led', true)
         .attr('width', (radius + margin) * 2).append('svg:g')
         .attr('transform', `translate(${radius + margin},${radius + margin})`)
-        .call(tron.led);
+        .call(tron.led)
 
     // good
     const leds = stage.selectAll('.led')
@@ -2301,10 +2301,10 @@
         .attr('width', (radius + margin) * 2)
       .append('svg:g')
         .attr('transform', `translate(${radius + margin},${radius + margin})`)
-        .call(tron.led);
+        .call(tron.led)
 
     // good
-    const leds = stage.selectAll('.led').data(data);
+    const leds = stage.selectAll('.led').data(data)
     ```
 
   <a name="whitespace--after-blocks"></a><a name="18.7"></a>
@@ -2313,16 +2313,16 @@
     ```javascript
     // bad
     if (foo) {
-      return bar;
+      return bar
     }
-    return baz;
+    return baz
 
     // good
     if (foo) {
-      return bar;
+      return bar
     }
 
-    return baz;
+    return baz
 
     // bad
     const obj = {
@@ -2330,8 +2330,8 @@
       },
       bar() {
       },
-    };
-    return obj;
+    }
+    return obj
 
     // good
     const obj = {
@@ -2340,9 +2340,9 @@
 
       bar() {
       },
-    };
+    }
 
-    return obj;
+    return obj
 
     // bad
     const arr = [
@@ -2350,8 +2350,8 @@
       },
       function bar() {
       },
-    ];
-    return arr;
+    ]
+    return arr
 
     // good
     const arr = [
@@ -2360,9 +2360,9 @@
 
       function bar() {
       },
-    ];
+    ]
 
-    return arr;
+    return arr
     ```
 
   <a name="whitespace--padded-blocks"></a><a name="18.8"></a>
@@ -2372,16 +2372,16 @@
     // bad
     function bar() {
 
-      console.log(foo);
+      console.log(foo)
 
     }
 
     // bad
     if (baz) {
 
-      console.log(qux);
+      console.log(qux)
     } else {
-      console.log(foo);
+      console.log(foo)
 
     }
 
@@ -2389,20 +2389,20 @@
     class Foo {
 
       constructor(bar) {
-        this.bar = bar;
+        this.bar = bar
       }
     }
 
     // good
     function bar() {
-      console.log(foo);
+      console.log(foo)
     }
 
     // good
     if (baz) {
-      console.log(qux);
+      console.log(qux)
     } else {
-      console.log(foo);
+      console.log(foo)
     }
     ```
 
@@ -2412,22 +2412,22 @@
     ```javascript
     // bad
     function bar( foo ) {
-      return foo;
+      return foo
     }
 
     // good
     function bar(foo) {
-      return foo;
+      return foo
     }
 
     // bad
     if ( foo ) {
-      console.log(foo);
+      console.log(foo)
     }
 
     // good
     if (foo) {
-      console.log(foo);
+      console.log(foo)
     }
     ```
 
@@ -2436,12 +2436,12 @@
 
     ```javascript
     // bad
-    const foo = [ 1, 2, 3 ];
-    console.log(foo[ 0 ]);
+    const foo = [ 1, 2, 3 ]
+    console.log(foo[ 0 ])
 
     // good
-    const foo = [1, 2, 3];
-    console.log(foo[0]);
+    const foo = [1, 2, 3]
+    console.log(foo[0])
     ```
 
   <a name="whitespace--in-braces"></a><a name="18.11"></a>
@@ -2449,10 +2449,10 @@
 
     ```javascript
     // bad
-    const foo = {clark: 'kent'};
+    const foo = {clark: 'kent'}
 
     // good
-    const foo = { clark: 'kent' };
+    const foo = { clark: 'kent' }
     ```
 
   <a name="whitespace--max-len"></a><a name="18.12"></a>
@@ -2462,10 +2462,10 @@
 
     ```javascript
     // bad
-    const foo = jsonData && jsonData.foo && jsonData.foo.bar && jsonData.foo.bar.baz && jsonData.foo.bar.baz.quux && jsonData.foo.bar.baz.quux.xyzzy;
+    const foo = jsonData && jsonData.foo && jsonData.foo.bar && jsonData.foo.bar.baz && jsonData.foo.bar.baz.quux && jsonData.foo.bar.baz.quux.xyzzy
 
     // bad
-    $.ajax({ method: 'POST', url: 'https://airbnb.com/', data: { name: 'John' } }).done(() => console.log('Congratulations!')).fail(() => console.log('You have failed this city.'));
+    $.ajax({ method: 'POST', url: 'https://airbnb.com/', data: { name: 'John' } }).done(() => console.log('Congratulations!')).fail(() => console.log('You have failed this city.'))
 
     // good
     const foo = jsonData
@@ -2473,7 +2473,7 @@
       && jsonData.foo.bar
       && jsonData.foo.bar.baz
       && jsonData.foo.bar.baz.quux
-      && jsonData.foo.bar.baz.quux.xyzzy;
+      && jsonData.foo.bar.baz.quux.xyzzy
 
     // good
     $.ajax({
@@ -2482,7 +2482,7 @@
       data: { name: 'John' },
     })
       .done(() => console.log('Congratulations!'))
-      .fail(() => console.log('You have failed this city.'));
+      .fail(() => console.log('You have failed this city.'))
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -2498,14 +2498,14 @@
         once
       , upon
       , aTime
-    ];
+    ]
 
     // good
     const story = [
       once,
       upon,
       aTime,
-    ];
+    ]
 
     // bad
     const hero = {
@@ -2513,7 +2513,7 @@
       , lastName: 'Lovelace'
       , birthYear: 1815
       , superPower: 'computers'
-    };
+    }
 
     // good
     const hero = {
@@ -2521,7 +2521,7 @@
       lastName: 'Lovelace',
       birthYear: 1815,
       superPower: 'computers',
-    };
+    }
     ```
 
   <a name="commas--dangling"></a><a name="19.2"></a>
@@ -2536,14 +2536,14 @@
     -    lastName: 'Nightingale'
     +    lastName: 'Nightingale',
     +    inventorOf: ['coxcomb chart', 'modern nursing']
-    };
+    }
 
     // good - git diff with trailing comma
     const hero = {
          firstName: 'Florence',
          lastName: 'Nightingale',
     +    inventorOf: ['coxcomb chart', 'modern nursing'],
-    };
+    }
     ```
 
     ```javascript
@@ -2551,23 +2551,23 @@
     const hero = {
       firstName: 'Dana',
       lastName: 'Scully'
-    };
+    }
 
     const heroes = [
       'Batman',
       'Superman'
-    ];
+    ]
 
     // good
     const hero = {
       firstName: 'Dana',
       lastName: 'Scully',
-    };
+    }
 
     const heroes = [
       'Batman',
       'Superman',
-    ];
+    ]
 
     // bad
     function createHero(
@@ -2602,14 +2602,14 @@
       firstName,
       lastName,
       inventorOf
-    );
+    )
 
     // good
     createHero(
       firstName,
       lastName,
       inventorOf,
-    );
+    )
 
     // good (note that a comma must not appear after a "rest" element)
     createHero(
@@ -2617,7 +2617,7 @@
       lastName,
       inventorOf,
       ...heroArgs
-    );
+    )
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -2638,41 +2638,41 @@
   - [22.2](#coercion--strings)  Strings:
 
     ```javascript
-    // => this.reviewScore = 9;
+    // => this.reviewScore = 9
 
     // bad
-    const totalScore = this.reviewScore + ''; // invokes this.reviewScore.valueOf()
+    const totalScore = this.reviewScore + '' // invokes this.reviewScore.valueOf()
 
     // bad
-    const totalScore = this.reviewScore.toString(); // isn’t guaranteed to return a string
+    const totalScore = this.reviewScore.toString() // isn’t guaranteed to return a string
 
     // good
-    const totalScore = String(this.reviewScore);
+    const totalScore = String(this.reviewScore)
     ```
 
   <a name="coercion--numbers"></a><a name="21.3"></a>
   - [22.3](#coercion--numbers) Numbers: Use `Number` for type casting and `parseInt` always with a radix for parsing strings. eslint: [`radix`](http://eslint.org/docs/rules/radix)
 
     ```javascript
-    const inputValue = '4';
+    const inputValue = '4'
 
     // bad
-    const val = new Number(inputValue);
+    const val = new Number(inputValue)
 
     // bad
-    const val = +inputValue;
+    const val = +inputValue
 
     // bad
-    const val = inputValue >> 0;
+    const val = inputValue >> 0
 
     // bad
-    const val = parseInt(inputValue);
+    const val = parseInt(inputValue)
 
     // good
-    const val = Number(inputValue);
+    const val = Number(inputValue)
 
     // good
-    const val = parseInt(inputValue, 10);
+    const val = parseInt(inputValue, 10)
     ```
 
   <a name="coercion--comment-deviations"></a><a name="21.4"></a>
@@ -2685,32 +2685,32 @@
      * Bitshifting the String to coerce it to a
      * Number made it a lot faster.
      */
-    const val = inputValue >> 0;
+    const val = inputValue >> 0
     ```
 
   <a name="coercion--bitwise"></a><a name="21.5"></a>
   - [22.5](#coercion--bitwise) **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](https://es5.github.io/#x4.3.19), but bitshift operations always return a 32-bit integer ([source](https://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
 
     ```javascript
-    2147483647 >> 0; // => 2147483647
-    2147483648 >> 0; // => -2147483648
-    2147483649 >> 0; // => -2147483647
+    2147483647 >> 0 // => 2147483647
+    2147483648 >> 0 // => -2147483648
+    2147483649 >> 0 // => -2147483647
     ```
 
   <a name="coercion--booleans"></a><a name="21.6"></a>
   - [22.6](#coercion--booleans) Booleans:
 
     ```javascript
-    const age = 0;
+    const age = 0
 
     // bad
-    const hasAge = new Boolean(age);
+    const hasAge = new Boolean(age)
 
     // good
-    const hasAge = Boolean(age);
+    const hasAge = Boolean(age)
 
     // best
-    const hasAge = !!age;
+    const hasAge = !!age
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -2737,12 +2737,12 @@
 
     ```javascript
     // bad
-    const OBJEcttsssss = {};
-    const this_is_my_object = {};
+    const OBJEcttsssss = {}
+    const this_is_my_object = {}
     function c() {}
 
     // good
-    const thisIsMyObject = {};
+    const thisIsMyObject = {}
     function thisIsMyFunction() {}
     ```
 
@@ -2752,23 +2752,23 @@
     ```javascript
     // bad
     function user(options) {
-      this.name = options.name;
+      this.name = options.name
     }
 
     const bad = new user({
       name: 'nope',
-    });
+    })
 
     // good
     class User {
       constructor(options) {
-        this.name = options.name;
+        this.name = options.name
       }
     }
 
     const good = new User({
       name: 'yup',
-    });
+    })
     ```
 
   <a name="naming--leading-underscore"></a><a name="22.4"></a>
@@ -2778,12 +2778,12 @@
 
     ```javascript
     // bad
-    this.__firstName__ = 'Panda';
-    this.firstName_ = 'Panda';
-    this._firstName = 'Panda';
+    this.__firstName__ = 'Panda'
+    this.firstName_ = 'Panda'
+    this._firstName = 'Panda'
 
     // good
-    this.firstName = 'Panda';
+    this.firstName = 'Panda'
     ```
 
   <a name="naming--self-this"></a><a name="22.5"></a>
@@ -2792,25 +2792,25 @@
     ```javascript
     // bad
     function foo() {
-      const self = this;
+      const self = this
       return function () {
-        console.log(self);
-      };
+        console.log(self)
+      }
     }
 
     // bad
     function foo() {
-      const that = this;
+      const that = this
       return function () {
-        console.log(that);
-      };
+        console.log(that)
+      }
     }
 
     // good
     function foo() {
       return () => {
-        console.log(this);
-      };
+        console.log(this)
+      }
     }
     ```
 
@@ -2822,31 +2822,31 @@
     class CheckBox {
       // ...
     }
-    export default CheckBox;
+    export default CheckBox
 
     // file 2 contents
-    export default function fortyTwo() { return 42; }
+    export default function fortyTwo() { return 42 }
 
     // file 3 contents
     export default function insideDirectory() {}
 
     // in some other file
     // bad
-    import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
-    import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
-    import InsideDirectory from './InsideDirectory'; // PascalCase import/filename, camelCase export
+    import CheckBox from './checkBox' // PascalCase import/export, camelCase filename
+    import FortyTwo from './FortyTwo' // PascalCase import/filename, camelCase export
+    import InsideDirectory from './InsideDirectory' // PascalCase import/filename, camelCase export
 
     // bad
-    import CheckBox from './check_box'; // PascalCase import/export, snake_case filename
-    import forty_two from './forty_two'; // snake_case import/filename, camelCase export
-    import inside_directory from './inside_directory'; // snake_case import, camelCase export
-    import index from './inside_directory/index'; // requiring the index file explicitly
-    import insideDirectory from './insideDirectory/index'; // requiring the index file explicitly
+    import CheckBox from './check_box' // PascalCase import/export, snake_case filename
+    import forty_two from './forty_two' // snake_case import/filename, camelCase export
+    import inside_directory from './inside_directory' // snake_case import, camelCase export
+    import index from './inside_directory/index' // requiring the index file explicitly
+    import insideDirectory from './insideDirectory/index' // requiring the index file explicitly
 
     // good
-    import CheckBox from './CheckBox'; // PascalCase export/import/filename
-    import fortyTwo from './fortyTwo'; // camelCase export/import/filename
-    import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
+    import CheckBox from './CheckBox' // PascalCase export/import/filename
+    import fortyTwo from './fortyTwo' // camelCase export/import/filename
+    import insideDirectory from './insideDirectory' // camelCase export/import/directory name/implicit "index"
     // ^ supports both insideDirectory.js and insideDirectory/index.js
     ```
 
@@ -2858,7 +2858,7 @@
       // ...
     }
 
-    export default makeStyleGuide;
+    export default makeStyleGuide
     ```
 
   <a name="naming--PascalCase-singleton"></a><a name="22.8"></a>
@@ -2868,9 +2868,9 @@
     const AirbnbStyleGuide = {
       es6: {
       },
-    };
+    }
 
-    export default AirbnbStyleGuide;
+    export default AirbnbStyleGuide
     ```
 
   <a name="naming--Acronyms-and-Initialisms"></a>
@@ -2880,33 +2880,33 @@
 
     ```javascript
     // bad
-    import SmsContainer from './containers/SmsContainer';
+    import SmsContainer from './containers/SmsContainer'
 
     // bad
     const HttpRequests = [
       // ...
-    ];
+    ]
 
     // good
-    import SMSContainer from './containers/SMSContainer';
+    import SMSContainer from './containers/SMSContainer'
 
     // good
     const HTTPRequests = [
       // ...
-    ];
+    ]
 
     // also good
     const httpRequests = [
       // ...
-    ];
+    ]
 
     // best
-    import TextMessageContainer from './containers/TextMessageContainer';
+    import TextMessageContainer from './containers/TextMessageContainer'
 
     // best
     const requests = [
       // ...
-    ];
+    ]
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -2949,12 +2949,12 @@
     ```javascript
     // bad
     if (!dragon.age()) {
-      return false;
+      return false
     }
 
     // good
     if (!dragon.hasAge()) {
-      return false;
+      return false
     }
     ```
 
@@ -2964,16 +2964,16 @@
     ```javascript
     class Jedi {
       constructor(options = {}) {
-        const lightsaber = options.lightsaber || 'blue';
-        this.set('lightsaber', lightsaber);
+        const lightsaber = options.lightsaber || 'blue'
+        this.set('lightsaber', lightsaber)
       }
 
       set(key, val) {
-        this[key] = val;
+        this[key] = val
       }
 
       get(key) {
-        return this[key];
+        return this[key]
       }
     }
     ```
@@ -2987,26 +2987,26 @@
 
     ```javascript
     // bad
-    $(this).trigger('listingUpdated', listing.id);
+    $(this).trigger('listingUpdated', listing.id)
 
     // ...
 
     $(this).on('listingUpdated', (e, listingId) => {
       // do something with listingId
-    });
+    })
     ```
 
     prefer:
 
     ```javascript
     // good
-    $(this).trigger('listingUpdated', { listingId: listing.id });
+    $(this).trigger('listingUpdated', { listingId: listing.id })
 
     // ...
 
     $(this).on('listingUpdated', (e, data) => {
       // do something with data.listingId
-    });
+    })
     ```
 
   **[⬆ back to top](#table-of-contents)**
@@ -3053,12 +3053,12 @@
 
     ```javascript
     // bad
-    isNaN('1.2'); // false
-    isNaN('1.2.3'); // true
+    isNaN('1.2') // false
+    isNaN('1.2.3') // true
 
     // good
-    Number.isNaN('1.2.3'); // false
-    Number.isNaN(Number('1.2.3')); // true
+    Number.isNaN('1.2.3') // false
+    Number.isNaN(Number('1.2.3')) // true
     ```
 
   <a name="standard-library--isfinite"></a>
@@ -3070,11 +3070,11 @@
 
     ```javascript
     // bad
-    isFinite('2e3'); // true
+    isFinite('2e3') // true
 
     // good
-    Number.isFinite('2e3'); // false
-    Number.isFinite(parseInt('2e3', 10)); // true
+    Number.isFinite('2e3') // false
+    Number.isFinite(parseInt('2e3', 10)) // true
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -3095,4 +3095,4 @@
 
 MIT License
 
-# };
+# }
